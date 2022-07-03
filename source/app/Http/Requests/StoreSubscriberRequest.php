@@ -30,6 +30,4 @@ class StoreSubscriberRequest extends FormRequest
         ];
     }
 
-
-
 }
