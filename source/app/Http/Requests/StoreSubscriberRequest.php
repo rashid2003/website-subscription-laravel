@@ -29,4 +29,10 @@ class StoreSubscriberRequest extends FormRequest
             'website_id' => 'required|integer|exists:websites,id',
         ];
     }
+
+    public function response(array $errors)
+    {
+        return response()->json(['errors' => $errors], 422);
+    }
+
 }

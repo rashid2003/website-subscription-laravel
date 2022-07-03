@@ -14,7 +14,6 @@ class SubscriberObserver
      */
     public function created(Subscriber $subscriber)
     {
-        //
     }
 
     /**

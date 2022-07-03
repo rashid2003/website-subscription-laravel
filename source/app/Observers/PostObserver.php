@@ -19,5 +19,7 @@ class PostObserver
         foreach($users as $user) {
             Queue::push(new \App\Jobs\SendSubEmail(['$post' => $post]));
         }  
+        
+        return response()->json(['success' => 'Successfully subscribered.'], 201);
     }    
 }

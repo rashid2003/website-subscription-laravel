@@ -41,7 +41,6 @@ class SubscriberController extends Controller
             'email' => $email,
             'website_id' => $website_id,
         ]);
-        return response()->json(['success' => 'Successfully subscribered.'], 201);
     }
 
 }
