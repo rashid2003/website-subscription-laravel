@@ -10,3 +10,5 @@ class Subscriber extends Model
     use HasFactory;
     protected $fillable = ['name', 'email', 'website_id'];
 }
+
+

@@ -16,10 +16,7 @@ class SubscriberController extends Controller
      */
     public function create()
     {
-        $name = request('name');
-        $email = request('email');
-        $website_id = request('website_id');
-        return response()->json(['success' => 'Successfully subscribered.'], 200);
+        
     }
 
     /**
@@ -30,51 +27,12 @@ class SubscriberController extends Controller
      */
     public function store(StoreSubscriberRequest $request)
     {
-        //
+        $name = request('name');
+        $email = request('email');
+        $website_id = request('website_id');
+        return response()->json(['success' => 'Successfully subscribered.'], 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Subscriber  $subscriber
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Subscriber $subscriber)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Subscriber  $subscriber
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Subscriber $subscriber)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateSubscriberRequest  $request
-     * @param  \App\Models\Subscriber  $subscriber
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateSubscriberRequest $request, Subscriber $subscriber)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Subscriber  $subscriber
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Subscriber $subscriber)
-    {
-        //
-    }
 }
+
+

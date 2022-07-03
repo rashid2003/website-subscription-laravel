@@ -22,13 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//make a router to handle the request for the website
 Route::get('/websites', [WebsiteController::class, 'index']);
-Route::post('/websites', [WebsiteController::class, 'store']);
 
-//make router to handle the request for the subscriber
-Route::get('/subscribers', [SubscriberController::class, 'index']);
 Route::post('/subscribers', [SubscriberController::class, 'store']);
 
-//make router to handle the request for the post
 Route::post('/posts', [PostController::class, 'store']);

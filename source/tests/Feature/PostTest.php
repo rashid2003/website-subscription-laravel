@@ -22,3 +22,4 @@ class PostTest extends TestCase
         $response->assertStatus(201);
     }
 }
+
