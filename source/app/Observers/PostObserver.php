@@ -14,7 +14,7 @@ class PostObserver
      */
     public function created(Post $post)
     {
-        $users = $post->website->users;
+        $users = Subscriber::where('website_id', $post->website_id)->get();
         foreach($users as $user) {
             $data = [
                 'post' => $post,
