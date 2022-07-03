@@ -8,19 +8,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-
+use Artisan;
 class SendSubEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    protected $post;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($post)
     {
-        $this->data = $data;
+        $this->post = $post;
     }
 
     /**
@@ -30,6 +31,6 @@ class SendSubEmail implements ShouldQueue
      */
     public function handle()
     {
-        Artisan::call("emails:send", ['post' => $data['post'], 'user' => $data['user']]);
+        Artisan::call("emails:send", ['post' => $this->post]);
     }
 }

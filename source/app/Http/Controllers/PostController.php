@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use Vyuldashev\LaravelOpenApi\Attributes as OpenApi;
-use App\Observers\PostObserver;
 use App\Models\Post;
 
 

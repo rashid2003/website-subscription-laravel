@@ -17,9 +17,11 @@ class PostTest extends TestCase
     public function test_create_new_post()
     {
         //create a test with title, body, and user_id
-        $response = $this->post('/api/posts', ['title' => 'Test Title', 'body' => 'Test Body', 'user_id' => 1]);
+        $response = $this->post('/api/posts', ['title' => 'Test Title', 'description' => 'Test Body', 'content' => 'Test Body', 'website_id' => 1]);
  
         $response->assertStatus(201);
     }
 }
+
+
 

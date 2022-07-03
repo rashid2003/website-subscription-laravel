@@ -4,6 +4,7 @@ namespace App\Observers;
 
 use App\Models\Post;
 use Mail;
+use Queue;
 class PostObserver
 {
     /**
@@ -14,13 +15,9 @@ class PostObserver
      */
     public function created(Post $post)
     {
-        $users = Subscriber::where('website_id', $post->website_id)->get();
+        $users = \App\Models\Subscriber::where('website_id', $post->website_id)->get();
         foreach($users as $user) {
-            $data = [
-                'post' => $post,
-                'user' => $user
-            ];
-            Queue::push(new SendSubEmail($data));
+            Queue::push(new \App\Jobs\SendSubEmail(['$post' => $post]));
         }  
     }    
 }
