@@ -30,9 +30,18 @@ class StoreSubscriberRequest extends FormRequest
         ];
     }
 
-    public function response(array $errors)
+
+
+    public function failedValidation(Validator $validator)
     {
-        return response()->json(['errors' => $errors], 422);
+        throw new HttpResponseException(
+            response()->json(
+                [
+                    'errors' => $validator->errors()->toArray(),
+                ],
+                422
+            )
+        );
     }
 
 }
