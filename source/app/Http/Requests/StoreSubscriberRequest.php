@@ -32,16 +32,4 @@ class StoreSubscriberRequest extends FormRequest
 
 
 
-    public function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(
-            response()->json(
-                [
-                    'errors' => $validator->errors()->toArray(),
-                ],
-                422
-            )
-        );
-    }
-
 }
