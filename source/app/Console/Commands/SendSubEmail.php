@@ -11,7 +11,7 @@ class SendSubEmail extends Command
      *
      * @var string
      */
-    protected $signature = 'emails:send {post} {users}';
+    protected $signature = 'emails:send {post} {user}';
 
     /**
      * The console command description.
@@ -27,15 +27,13 @@ class SendSubEmail extends Command
      */
     public function handle()
     {
-        $posts = $this.argument('post');
-        foreach($this->argument('users') as $user) {
-            // $user->notify(new \App\Notifications\PostCreated($post));
-            Mail::send(['text'=>'mail'], $data, function($message) {
-                $message->to($user->email, $post->title)->subject
-                    ($post->description);
-                $message->from('xyz@gmail.com','Rashid Obaidi');
-            });
-        }  
-        $this->info('The emails are send successfully!');
+        $post = $this.argument('post');
+        $user = $this.argument('user');
+        Mail::send(['text'=>'mail'], $data, function($message) {
+            $message->to($user->email, $post->title)->subject
+                ($post->description);
+            $message->from('xyz@gmail.com','Rashid Obaidi');
+        });
+        $this->info('The email send successfully!');
     }
 }

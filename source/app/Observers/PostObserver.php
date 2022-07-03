@@ -15,12 +15,13 @@ class PostObserver
     public function created(Post $post)
     {
         $users = $post->website->users;
-        $data = [
-            'post' => $post,
-            'users' => $users
-        ];
+        
         
         foreach($users as $user) {
+            $data = [
+                'post' => $post,
+                'user' => $user
+            ];
             Queue::push(new SendSubEmail($data));
         }  
     }

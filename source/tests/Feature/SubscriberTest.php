@@ -12,7 +12,7 @@ class SubscriberTest extends TestCase
     public function test_create_new_subscriber()
     {
         //create a test with name, email, and website_id
-        $response = $this->post('/api/subscribers', ['name' => 'Test Name', 'email' => 'Test Email', 'website_id' => 1]);
+        $response = $this->post('/api/subscribers', ['name' => 'Test Name', 'email' => 'info@lajward.co', 'website_id' => 1]);
 
         $response->assertStatus(201);
     }
