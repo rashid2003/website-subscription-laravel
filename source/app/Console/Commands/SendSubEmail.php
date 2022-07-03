@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Mail;
+use Illuminate\Support\Facades\Log;
+
 class SendSubEmail extends Command
 {
     /**
@@ -11,7 +13,7 @@ class SendSubEmail extends Command
      *
      * @var string
      */
-    protected $signature = 'emails:send {post} {--user}';
+    protected $signature = 'emails:send {post}';
 
     /**
      * The console command description.
@@ -27,16 +29,16 @@ class SendSubEmail extends Command
      */
     public function handle()
     {
-        $post = $this->argument('post');
-        //log to see if it works
-        Log::debug(json_encode($post));
-        $user = \App\Models\Subscriber::where('website_id', $post['website_id'])->first();
 
-        $data = ['name'=> "Sender Name", "body" => $post->description];
+        $post = $this->argument('post');
+
+        $user = \App\Models\Subscriber::where('website_id', $post['$post']['website_id'])->first();
+
+        $data = ['name'=> "Sender Name", "body" => $post['$post']['description']];
 
         Mail::send(['text'=>'mail'], $data, function($message) {
             $message->to($user->email, $user->name)->subject
-                ($post->title);
+                ($post['$post']['title']);
             $message->from('xyz@gmail.com','Rashid Obaidi');
         });
         $this->info('The email send successfully!');
